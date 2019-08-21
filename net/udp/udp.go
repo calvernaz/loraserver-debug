@@ -83,7 +83,7 @@ func publishPushMessagePayloads(gatewayEui []byte, payload lora.PushMessagePaylo
 }
 
 func convertStat(gatewayEui []byte, stat *lora.Stat) (*lora.GatewayStatus, error) {
-	t, err := time.Parse(time.RFC822, stat.Time)
+	t, err := time.Parse("2006-01-02 15:04:05 GMT", stat.Time)
 	if err != nil {
 		logrus.Printf("Failed to parse time %s: %s", stat.Time, err.Error())
 		t = time.Now()
